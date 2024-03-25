@@ -1,6 +1,7 @@
 import React from 'react';
 import { ImImage } from '../../types';
 import { Link } from 'react-router-dom';
+
 import './PodcastCardStyles.css';
 
 interface PodcastCardProps {

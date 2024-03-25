@@ -1,7 +1,8 @@
 import React from 'react';
 import { useGetData } from './hooks';
-import './styles.css';
 import { PreviewPodcastCard } from './components/PodcastCard/';
+
+import './styles.css';
 
 export default function App() {
   const { isSuccess, data } = useGetData();
