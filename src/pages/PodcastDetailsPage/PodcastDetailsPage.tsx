@@ -11,7 +11,7 @@ export const PodcastDetailsPage: React.FC = () => {
   const { findPodcast } = useGetData();
   const currentPodcast = findPodcast(podcastId || '');
   const { details } = useGetDetails(podcastId);
-
+  console.log(details);
   return (
     <div>
       <main className="podcast-details-page-container">
@@ -29,7 +29,7 @@ export const PodcastDetailsPage: React.FC = () => {
             <h2>Episodes: {details?.items.length}</h2>
           </div>
           <div>
-            <Table />
+            <Table items={details?.items || []} podcastId={podcastId || ''} />
           </div>
         </section>
       </main>

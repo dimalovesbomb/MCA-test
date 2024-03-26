@@ -9,7 +9,7 @@ interface PodcastCardsProps {
 }
 
 export const PodcastCards: React.FC<PodcastCardsProps> = ({ entries }) => {
-  const composeUrl = (id: Id) => `/podcasts/${id.attributes?.['im:id']}`;
+  const composeUrl = (id: Id) => `/podcast/${id.attributes?.['im:id']}`;
 
   return (
     <div className="podcast-cards-container">
