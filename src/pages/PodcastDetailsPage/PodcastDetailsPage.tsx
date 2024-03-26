@@ -11,7 +11,7 @@ export const PodcastDetailsPage: React.FC = () => {
   const { findPodcast } = useGetData();
   const currentPodcast = findPodcast(podcastId || '');
   const { details } = useGetDetails(podcastId);
-  console.log(details);
+
   return (
     <div>
       <main className="podcast-details-page-container">
