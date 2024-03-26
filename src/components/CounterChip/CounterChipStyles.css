@@ -1,0 +1,15 @@
+.counter-chip-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 1rem;
+    background-color: var(--color-primary-blue);
+
+    width: 3rem;
+    height: 2rem;
+}
+
+.counter-chip-el {
+    color: var(--color-primary-white);
+}
