@@ -1,15 +1,15 @@
-.link {
+.preview-link {
     display: inline-block;
     width: 17rem;
     text-decoration: none;
 }
-.outer-container {
+.preview-outer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.inner-container {
+.preview-inner-container {
     background-color: var(--color-primary-white);
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
 }
 
 
-.image-container {
+.preview-image-container {
     display: flex;
     justify-content: center;
     transform: translateY(50%);
@@ -30,12 +30,12 @@
     margin-block-start: -20%;
 }
 
-.image {
+.preview-image {
     border-radius: 50%;
     width: 70%;
 }
 
-.label {
+.preview-label {
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -46,7 +46,7 @@
     padding: 0 0.5rem;
 }
 
-.author {
+.preview-author {
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;

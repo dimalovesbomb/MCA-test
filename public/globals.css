@@ -3,5 +3,5 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-    src: url('./font/open-sans-v40-latin-regular.woff2') format('woff2');
+    src: url('font/open-sans-v40-latin-regular.woff2') format('woff2');
 }

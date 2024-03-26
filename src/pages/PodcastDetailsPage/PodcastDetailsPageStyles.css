@@ -1,0 +1,23 @@
+.podcast-details-page-container {
+    display: flex;
+    margin: 0 auto;
+    margin-block-start: 2rem;
+    max-width: 1050px;
+    gap: 3rem
+}
+
+.podcast-details-page-right {
+    width: 100%;
+}
+
+.podcast-details-page-right-header {
+    box-shadow: 0 5px 10px rgb(176 177 181 / 75%);
+    border-radius: 5px;
+    color: var(--color-primary);
+    padding: 1rem;
+}
+
+.podcast-details-page-right-header h2 {
+    margin: 0;
+}
+

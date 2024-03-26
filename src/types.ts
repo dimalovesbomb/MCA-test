@@ -116,3 +116,103 @@ export interface ImReleaseDate {
 export interface Capture {
   label: string;
 }
+
+/////////////////////
+
+export interface DetailsContents {
+  resultCount: number;
+  results: DetailsResult[];
+}
+
+export interface DetailsResult {
+  wrapperType: string;
+  kind: string;
+  collectionId: number;
+  trackId: number;
+  artistName: string;
+  collectionName: string;
+  trackName: string;
+  collectionCensoredName: string;
+  trackCensoredName: string;
+  collectionViewUrl: string;
+  feedUrl: string;
+  trackViewUrl: string;
+  artworkUrl30: string;
+  artworkUrl60: string;
+  artworkUrl100: string;
+  collectionPrice: number;
+  trackPrice: number;
+  collectionHdPrice: number;
+  releaseDate: string;
+  collectionExplicitness: string;
+  trackExplicitness: string;
+  trackCount: number;
+  trackTimeMillis: number;
+  country: string;
+  currency: string;
+  primaryGenreName: string;
+  artworkUrl600: string;
+  genreIds: string[];
+  genres: string[];
+}
+
+///////////
+
+export interface RSSResponse {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+  category: any[];
+  items: Item[];
+}
+
+export interface Item {
+  id: string;
+  title: string;
+  description: string;
+  link: string;
+  published: number;
+  created: number;
+  category: any;
+  content: string;
+  enclosures: [Enclosures, Enclosure[]];
+  content_encoded: string;
+  itunes_summary?: string;
+  itunes_author: string;
+  itunes_duration: number;
+  itunes_episodeType: string;
+  itunes_image: ItunesImage;
+  media: Media;
+  itunes_explicit?: string;
+}
+
+export interface Enclosures {
+  url: string;
+  length: string;
+  type: string;
+}
+
+export interface Enclosure {
+  'media:player'?: MediaPlayer;
+  url: string;
+  type: string;
+}
+
+export interface MediaPlayer {
+  url: string;
+}
+
+export interface ItunesImage {
+  href: string;
+}
+
+export interface Media {
+  thumbnail: Thumbnail[];
+}
+
+export interface Thumbnail {
+  'media:player'?: MediaPlayer;
+  url: string;
+  type: string;
+}

@@ -1,14 +1,21 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
+import { MainPage, PodcastDetailsPage } from './pages';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-  },
-  {
-    path: '/podcasts/:podcastId',
-    element: <div>didnt break</div>,
+    children: [
+      {
+        path: '/',
+        element: <MainPage />,
+      },
+      {
+        path: '/podcasts/:podcastId',
+        element: <PodcastDetailsPage />,
+      },
+    ],
   },
   {
     path: '/bar',

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getData } from '../api';
 import { LOCALSTORAGE_DATA_KEY, LOCALSTORAGE_EXP_DATE_KEY } from '../helpers/constants';
 import { isDataExpired } from '../helpers';
-import type { Root } from '../types';
+import type { Entry, Root } from '../types';
 
 export const useGetData = () => {
   const [data, setData] = useState<Root | null>(null);
@@ -27,8 +27,14 @@ export const useGetData = () => {
       setIsSuccess(true);
     }
   }, []);
+
+  const findPodcast = (id: string): Entry | undefined => {
+    return data?.feed.entry.find((podcast) => podcast.id.attributes?.['im:id'] === id);
+  };
+
   return {
     data,
     isSuccess,
+    findPodcast,
   };
 };

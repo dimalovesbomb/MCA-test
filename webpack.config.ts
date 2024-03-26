@@ -1,7 +1,7 @@
 import path from 'path';
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 import type { Configuration } from 'webpack';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const devServer: DevServerConfiguration = {
   historyApiFallback: true,
@@ -28,12 +28,9 @@ const config: Configuration = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
-  plugins: [
-    new CopyWebpackPlugin({
-      patterns: [{ from: 'public' }],
-    }),
-  ],
+  plugins: [new HtmlWebpackPlugin({ filename: './public/index.html' })],
   devServer,
 };
 

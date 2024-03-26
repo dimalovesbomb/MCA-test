@@ -1,7 +1,6 @@
 import React from 'react';
 import { FilterInput } from '../../modules/FilterInput';
 import { useFilterData, useGetData } from '../../hooks';
-import { Header } from '../../components/Header';
 import { PodcastCards } from '../../modules/PodcastCards';
 
 import './MainPageStyles.css';
@@ -12,7 +11,6 @@ export const MainPage = () => {
 
   return (
     <div>
-      <Header />
       <main className="main">
         <section className="filter">
           <FilterInput
