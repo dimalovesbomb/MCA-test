@@ -3,3 +3,9 @@
     align-items: center;
     gap: 1rem;
 }
+
+@media (max-width: 340px) {
+    .filter-input-container {
+        gap: .3rem;
+    }
+}

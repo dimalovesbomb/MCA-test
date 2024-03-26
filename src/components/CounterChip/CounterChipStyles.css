@@ -13,3 +13,14 @@
 .counter-chip-el {
     color: var(--color-primary-white);
 }
+
+@media (max-width: 340px) {
+    .counter-chip-container {
+        width: 1.5rem;
+        height: 1rem;
+    }
+
+    .counter-chip-el {
+        font-size: .5rem;
+    }
+}

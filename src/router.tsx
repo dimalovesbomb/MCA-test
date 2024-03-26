@@ -7,6 +7,10 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
+    path: '/podcasts/:podcastId',
+    element: <div>didnt break</div>,
+  },
+  {
     path: '/bar',
     element: <div>foo</div>,
   },
