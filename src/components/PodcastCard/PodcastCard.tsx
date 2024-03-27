@@ -15,7 +15,7 @@ interface PodcastCardProps {
 
 export const PodcastCard: React.FC<PodcastCardProps> = ({ image, label, artist, summary, url }) => {
   const href = url && typeof url === 'object' ? url.attributes.href : url;
-  // console.log(url);
+
   return (
     <div className="podcast-card-container">
       {url ? (
