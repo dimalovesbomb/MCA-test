@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { useGetData, useGetDetails } from '../../hooks';
 import { PodcastCard } from '../../components/PodcastCard';
-import { Table } from '../../modules/Table';
+import { Table } from '../../components/modules/Table';
 
 import './PodcastDetailsPageStyles.css';
 

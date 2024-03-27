@@ -1,31 +1,27 @@
 import { useEffect, useState } from 'react';
 import { getOverviewData } from '../api';
-import { LC_OVERVIEW_DATA_KEY, LC_OVERVIEW_EXP_DATE_KEY } from '../helpers/constants';
-import { isDataExpired, retrieveAndCacheData } from '../helpers';
-import type { Entry, OverviewDataRes } from '../types';
+import { LC_OVERVIEW_DATA_KEY } from '../helpers/constants';
+import { checkAndRemoveExpiredData, isDateExpired, retrieveAndCacheData } from '../helpers';
+import { CachedOverviewData, Entry } from '../types';
 
 export const useGetData = () => {
-  const [data, setData] = useState<OverviewDataRes | null>(null);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [data, setData] = useState<CachedOverviewData | null>(null);
 
   useEffect(() => {
     const localStorageData = localStorage.getItem(LC_OVERVIEW_DATA_KEY);
-    const localStorageTimestamp = localStorage.getItem(LC_OVERVIEW_EXP_DATE_KEY);
-    if (!localStorageData || isDataExpired(localStorageTimestamp)) {
+    const parsedLSData: CachedOverviewData = JSON.parse(localStorageData || '{}');
+
+    if (Object.keys(parsedLSData).length && !isDateExpired(parsedLSData?.meta?.loadedTimestamp)) {
+      setData(parsedLSData);
+    } else {
       retrieveAndCacheData({
         getDataFn: getOverviewData,
-        localStorageKeys: {
-          date: LC_OVERVIEW_EXP_DATE_KEY,
-          data: LC_OVERVIEW_DATA_KEY,
-        },
-        callback: (response: OverviewDataRes) => {
+        localStorageKey: LC_OVERVIEW_DATA_KEY,
+        callback: (response: CachedOverviewData) => {
           setData(response);
-          setIsSuccess(true);
+          checkAndRemoveExpiredData();
         },
       });
-    } else {
-      setData(JSON.parse(localStorageData || ''));
-      setIsSuccess(true);
     }
   }, []);
 
@@ -35,7 +31,6 @@ export const useGetData = () => {
 
   return {
     data,
-    isSuccess,
     findPodcast,
   };
 };

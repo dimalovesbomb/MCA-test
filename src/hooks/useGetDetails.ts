@@ -1,36 +1,38 @@
 import { useEffect, useState } from 'react';
 import { getDetailsData } from '../api';
 import { parse } from 'rss-to-json';
-import { RSSResponse } from '../types';
-import { isDataExpired, retrieveAndCacheData } from '../helpers';
-import { LC_DETAILS_DATA_KEY, LS_DETAILS_EXP_DATE_KEY } from '../helpers/constants';
+import { CachedRSSResponse, RSSResponse } from '../types';
+import { isDateExpired, checkAndRemoveExpiredData, retrieveAndCacheData } from '../helpers';
 
-const runGetDetails = async (podcastId = '') => {
-  const details = await getDetailsData(podcastId);
-  const res: RSSResponse = await parse(details?.results[0].feedUrl || '');
+const runGetDetails = async (podcastId = ''): Promise<CachedRSSResponse | void> => {
+  try {
+    const details = await getDetailsData(podcastId);
+    const res: RSSResponse = await parse(details?.results[0].feedUrl || '');
 
-  return res;
+    return { ...res, meta: { podcastId, loadedTimestamp: Date.now() } };
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export const useGetDetails = (podcastId = '') => {
-  const [details, setDetails] = useState<RSSResponse>();
+  const [details, setDetails] = useState<CachedRSSResponse>();
 
   useEffect(() => {
-    const localStorageData = localStorage.getItem(LC_DETAILS_DATA_KEY);
-    const localStorageTimestamp = localStorage.getItem(LS_DETAILS_EXP_DATE_KEY);
-    if (!localStorageData || isDataExpired(localStorageTimestamp)) {
+    const targetPodcastFromCache = localStorage.getItem(podcastId);
+    const parsed: CachedRSSResponse = JSON.parse(targetPodcastFromCache || '{}');
+
+    if (Object.keys(parsed).length && !isDateExpired(parsed.meta.loadedTimestamp)) {
+      setDetails(parsed);
+    } else {
       retrieveAndCacheData({
         getDataFn: () => runGetDetails(podcastId),
-        localStorageKeys: {
-          date: LS_DETAILS_EXP_DATE_KEY,
-          data: LC_DETAILS_DATA_KEY,
-        },
-        callback: (response: RSSResponse) => {
+        localStorageKey: podcastId,
+        callback: (response: CachedRSSResponse) => {
           setDetails(response);
+          checkAndRemoveExpiredData();
         },
       });
-    } else {
-      setDetails(JSON.parse(localStorageData || ''));
     }
   }, []);
 

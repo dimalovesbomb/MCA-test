@@ -1,6 +1,6 @@
 import React from 'react';
-import { CounterChip, CounterChipProps } from '../../components/CounterChip';
-import { Input, InputProps } from '../../components/Input';
+import { CounterChip, CounterChipProps } from '../../CounterChip';
+import { Input, InputProps } from '../../Input';
 import './FilterInputStyles.css';
 
 type FilterInputProps = InputProps & CounterChipProps;

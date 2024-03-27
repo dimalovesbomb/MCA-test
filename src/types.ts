@@ -1,6 +1,12 @@
+export interface LocalStorageMeta {
+  meta: { loadedTimestamp: number; podcastId?: string };
+}
+
 export interface OverviewDataRes {
   feed: Feed;
 }
+
+export type CachedOverviewData = OverviewDataRes & LocalStorageMeta;
 
 export interface Feed {
   author: Author;
@@ -168,7 +174,7 @@ export interface RSSResponse {
 }
 
 export interface Item {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   link: string;
@@ -216,3 +222,5 @@ export interface Thumbnail {
   url: string;
   type: string;
 }
+
+export type CachedRSSResponse = RSSResponse & LocalStorageMeta;

@@ -1,2 +1,2 @@
-export { isDataExpired } from './isDataExpired';
-export { retrieveAndCacheData } from './retriveAndCacheData';
+export { isDateExpired } from './isDateExpired';
+export { retrieveAndCacheData, checkAndRemoveExpiredData } from './retriveAndCacheData';

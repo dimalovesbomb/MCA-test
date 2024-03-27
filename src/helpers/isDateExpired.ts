@@ -1,8 +1,8 @@
-export const isDataExpired = (localStorageTime: number | string | null) => {
+export const isDateExpired = (localStorageTime: number | string | null) => {
   const parsedLocalStorageTime =
     typeof localStorageTime === 'number' ? localStorageTime : parseInt(JSON.parse(localStorageTime || '{}'));
   if (Number.isNaN(parsedLocalStorageTime)) {
-    console.error('localStorageTime could not be parsed at isDataExpired');
+    console.error('localStorageTime could not be parsed at isDateExpired');
     return true;
   }
 

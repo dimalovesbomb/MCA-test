@@ -1,6 +1,6 @@
 import React from 'react';
-import { Entry, Id } from '../../types';
-import { PreviewPodcastCard } from '../../components/PreviewPodcastCard';
+import { Entry, Id } from '../../../types';
+import { PreviewPodcastCard } from '../../PreviewPodcastCard';
 
 import './PodcastCardsStyles.css';
 

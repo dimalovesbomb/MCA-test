@@ -1,22 +1,28 @@
+import { LocalStorageMeta } from '../types';
+import { isDateExpired } from './isDateExpired';
+
 type RetrieveAndCacheDataSetupObj<Res> = {
-  getDataFn: () => Promise<Res>;
-  localStorageKeys: {
-    date: string;
-    data: string;
-  };
+  getDataFn: () => Promise<Res | void>;
+  localStorageKey: string;
   callback?: (response: Res) => void;
 };
 
 export async function retrieveAndCacheData<Res>(setup: RetrieveAndCacheDataSetupObj<Res>) {
-  const {
-    getDataFn,
-    localStorageKeys: { date, data },
-    callback,
-  } = setup;
+  const { getDataFn, localStorageKey, callback } = setup;
   const response = await getDataFn();
 
-  localStorage.setItem(date, JSON.stringify(Date.now()));
-  localStorage.setItem(data, JSON.stringify(response));
+  response && localStorage.setItem(localStorageKey, JSON.stringify(response));
 
-  callback && callback(response);
+  callback && response && callback(response);
 }
+
+export const checkAndRemoveExpiredData = () => {
+  Object.keys(localStorage).forEach((key) => {
+    const item = localStorage.getItem(key);
+    const parsed: (unknown & LocalStorageMeta) | null = JSON.parse(item || '');
+
+    if (parsed && parsed.meta?.loadedTimestamp && isDateExpired(parsed.meta.loadedTimestamp)) {
+      localStorage.removeItem(key);
+    }
+  });
+};

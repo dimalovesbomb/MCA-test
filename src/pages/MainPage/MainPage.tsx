@@ -1,12 +1,12 @@
 import React from 'react';
-import { FilterInput } from '../../modules/FilterInput';
+import { FilterInput } from '../../components/modules/FilterInput';
 import { useFilterData, useGetData } from '../../hooks';
-import { PodcastCards } from '../../modules/PodcastCards';
+import { PodcastCards } from '../../components/modules/PodcastCards';
 
 import './MainPageStyles.css';
 
 export const MainPage = () => {
-  const { isSuccess, data } = useGetData();
+  const { data } = useGetData();
   const { searchValue, setSearchValue, cards } = useFilterData(data?.feed.entry);
 
   return (
@@ -20,7 +20,7 @@ export const MainPage = () => {
             placeholder="Filter podcasts..."
           />
         </section>
-        <section className="podcast-cards">{isSuccess && <PodcastCards entries={cards} />}</section>
+        <section className="podcast-cards">{cards.length && <PodcastCards entries={cards} />}</section>
       </main>
     </div>
   );
