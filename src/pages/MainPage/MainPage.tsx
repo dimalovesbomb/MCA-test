@@ -10,18 +10,16 @@ export const MainPage = () => {
   const { searchValue, setSearchValue, cards } = useFilterData(data?.feed.entry);
 
   return (
-    <div>
-      <main className="main">
-        <section className="filter">
-          <FilterInput
-            count={cards.length}
-            value={searchValue}
-            onChange={setSearchValue}
-            placeholder="Filter podcasts..."
-          />
-        </section>
-        <section className="podcast-cards">{cards.length && <PodcastCards entries={cards} />}</section>
-      </main>
-    </div>
+    <main className="main">
+      <section className="filter">
+        <FilterInput
+          count={cards.length}
+          value={searchValue}
+          onChange={setSearchValue}
+          placeholder="Filter podcasts..."
+        />
+      </section>
+      <section className="podcast-cards">{cards.length && <PodcastCards entries={cards} />}</section>
+    </main>
   );
 };
