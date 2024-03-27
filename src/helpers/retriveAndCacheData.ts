@@ -19,9 +19,9 @@ export async function retrieveAndCacheData<Res>(setup: RetrieveAndCacheDataSetup
 export const checkAndRemoveExpiredData = () => {
   Object.keys(localStorage).forEach((key) => {
     const item = localStorage.getItem(key);
-    const parsed: (unknown & LocalStorageMeta) | null = JSON.parse(item || '');
+    const parsed: unknown & LocalStorageMeta = JSON.parse(item || '{}');
 
-    if (parsed && parsed.meta?.loadedTimestamp && isDateExpired(parsed.meta.loadedTimestamp)) {
+    if (Object.keys(parsed).length && parsed.meta?.loadedTimestamp && isDateExpired(parsed.meta.loadedTimestamp)) {
       localStorage.removeItem(key);
     }
   });
