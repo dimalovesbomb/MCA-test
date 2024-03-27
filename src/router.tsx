@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import { MainPage, PodcastDetailsPage } from './pages';
+import { EpisodePage, MainPage, PodcastDetailsPage } from './pages';
 
 export const router = createBrowserRouter([
   {
@@ -15,10 +15,10 @@ export const router = createBrowserRouter([
         path: '/podcast/:podcastId',
         element: <PodcastDetailsPage />,
       },
+      {
+        path: '/podcast/:podcastId/episode/:episodeId',
+        element: <EpisodePage />,
+      },
     ],
-  },
-  {
-    path: '/bar',
-    element: <div>foo</div>,
   },
 ]);

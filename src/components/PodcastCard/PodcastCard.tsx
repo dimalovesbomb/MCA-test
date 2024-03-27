@@ -21,9 +21,9 @@ export const PodcastCard: React.FC<PodcastCardProps> = ({ image, label, artist, 
         <p className="podcast-label">{label}</p>
         <p className="podcast-artist">By {artist}</p>
       </div>
-      <div>
+      <div className="podcast-description">
         <p className="podcast-description-header">Description:</p>
-        <p className="podcast-description-summary">{summary}</p>
+        <span className="podcast-description-summary">{summary}</span>
       </div>
     </div>
   );

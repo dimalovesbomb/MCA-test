@@ -13,7 +13,7 @@ export const Table: React.FC<TableProps> = ({ items, podcastId }) => {
     const date = new Date(timestamp);
     return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
   };
-  const composeUrl = (episodeId: string) => `/podcast/${podcastId}/episode/${episodeId}`;
+  const composeUrl = (episodeId: string) => `/podcast/${podcastId}/episode/${btoa(episodeId)}`;
 
   return (
     <div className="table-container">

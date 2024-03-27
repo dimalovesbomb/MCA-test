@@ -2,12 +2,12 @@
     --color-primary: #0b0b1f;
     --color-secondary: #666669;
     --color-primary-white: #f4f4f5;
-    --color-primary-blue: #1d1e42;
+    --color-primary-blue: #252659;
 }
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 0 0 2rem 0;
     box-sizing: border-box;
     background-color: #f6f7f8;
     font-family: 'Open Sans', serif;

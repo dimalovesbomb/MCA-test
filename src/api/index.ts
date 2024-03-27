@@ -1,1 +1,1 @@
-export { getData, getDetails } from './getData';
+export { getOverviewData, getDetailsData } from './getData';

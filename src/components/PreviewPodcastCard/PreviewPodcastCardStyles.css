@@ -20,6 +20,11 @@
     border-radius: 2px 2px 5px 5px;
 }
 
+.preview-inner-container:hover {
+    box-shadow: 0 5px 10px rgb(176 177 181 / 95%);
+    transition: box-shadow .3s ease;
+}
+
 
 .preview-image-container {
     display: flex;
