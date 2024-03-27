@@ -40,7 +40,7 @@ export interface Entry {
   'im:contentType': ImContentType;
   rights?: Capture;
   title: Capture;
-  link: Link;
+  link: Link | string;
   id: Id;
   'im:artist': ImArtist;
   category: Category;

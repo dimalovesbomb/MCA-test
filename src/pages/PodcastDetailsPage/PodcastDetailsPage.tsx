@@ -20,6 +20,7 @@ export const PodcastDetailsPage: React.FC = () => {
           label={currentPodcast?.['im:name'].label || ''}
           artist={currentPodcast?.['im:artist'].label || ''}
           summary={currentPodcast?.summary.label || ''}
+          url={currentPodcast?.link}
         />
       </section>
 

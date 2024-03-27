@@ -12,7 +12,7 @@ export const EpisodePage: React.FC = () => {
   const currentPodcast = findPodcast(podcastId || '');
   const { details } = useGetDetails(podcastId);
   const currentEpisode = details?.items.find((episode) => episode.created === parseInt(atob(episodeId || '')));
-
+  console.log(currentEpisode);
   return (
     <main className="episode-page-container">
       <section>
@@ -21,6 +21,7 @@ export const EpisodePage: React.FC = () => {
           label={currentPodcast?.['im:name'].label || ''}
           artist={currentPodcast?.['im:artist'].label || ''}
           summary={currentPodcast?.summary.label || ''}
+          url={currentPodcast?.link}
         />
       </section>
       <section>

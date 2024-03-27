@@ -53,3 +53,7 @@
     font-style: italic;
     word-wrap: break-word;
 }
+
+.link {
+    text-decoration: none;
+}

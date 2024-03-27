@@ -1,5 +1,6 @@
 import React from 'react';
 import './PodcastCardStyles.css';
+import { Link } from '../../types';
 
 interface PodcastCardProps {
   image: {
@@ -9,16 +10,34 @@ interface PodcastCardProps {
   label: string;
   artist: string;
   summary: string;
+  url?: string | Link;
 }
 
-export const PodcastCard: React.FC<PodcastCardProps> = ({ image, label, artist, summary }) => {
+export const PodcastCard: React.FC<PodcastCardProps> = ({ image, label, artist, summary, url }) => {
+  const href = url && typeof url === 'object' ? url.attributes.href : url;
+  // console.log(url);
   return (
     <div className="podcast-card-container">
-      <figure className="podcast-image-container">
-        <img className="podcast-image" alt={image.alt} src={image.src} />
-      </figure>
+      {url ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" className="link">
+          <figure className="podcast-image-container">
+            <img className="podcast-image" alt={image.alt} src={image.src} />
+          </figure>
+        </a>
+      ) : (
+        <figure className="podcast-image-container">
+          <img className="podcast-image" alt={image.alt} src={image.src} />
+        </figure>
+      )}
+
       <div>
-        <p className="podcast-label">{label}</p>
+        {url ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" className="link">
+            <p className="podcast-label">{label}</p>
+          </a>
+        ) : (
+          <p className="podcast-label">{label}</p>
+        )}
         <p className="podcast-artist">By {artist}</p>
       </div>
       <div className="podcast-description">
