@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    {"source": "/podcasts/(.*)", "destination": "/"}
+    {"source": "/(.js)", "destination": "/(.js)"}
   ]
 }
