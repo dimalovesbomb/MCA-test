@@ -31,7 +31,7 @@ const config: Configuration = {
   output: {
     filename: '[id].bundle.js',
     path: path.resolve(__dirname, './dist'),
-    publicPath: mode === 'production' ? './' : '/',
+    publicPath: '/',
     asyncChunks: true,
     chunkFilename: '[id].js',
     cssHeadDataCompression: mode === 'production',

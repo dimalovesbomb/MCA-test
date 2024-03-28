@@ -10,6 +10,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <MainPage />,
+        index: true,
       },
       {
         path: '/podcast/:podcastId',

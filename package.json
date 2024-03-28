@@ -6,6 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack serve --mode=development",
     "build": "NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack build --mode=production",
+    "serve-build": "serve dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dmitrii Kupriunin",

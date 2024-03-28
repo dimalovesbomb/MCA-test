@@ -5,7 +5,7 @@ import { isDateExpired, checkAndRemoveExpiredData, retrieveAndCacheData } from '
 
 const runGetDetails = async (podcastId = ''): Promise<CachedRSSResponse | void> => {
   try {
-    const { parse } = await import(/* webpackMode: "lazy" */ 'rss-to-json');
+    const { parse } = await import(/* webpackMode: "lazy" */ /* webpackPreload: true */ 'rss-to-json');
     const details = await getDetailsData(podcastId);
     const res: RSSResponse = await parse(details?.results[0].feedUrl || '');
 
