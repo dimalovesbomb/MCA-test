@@ -6,8 +6,11 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 const devServer: DevServerConfiguration = {
   historyApiFallback: true,
 };
+
+const mode = (process.env.NODE_ENV as 'production' | 'development' | undefined) ?? 'development';
+
 const config: Configuration = {
-  mode: (process.env.NODE_ENV as 'production' | 'development' | undefined) ?? 'development',
+  mode,
   entry: './src/index.tsx',
   module: {
     rules: [
@@ -26,11 +29,20 @@ const config: Configuration = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    filename: '[id].bundle.js',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: mode === 'production' ? './' : '/',
+    asyncChunks: true,
+    chunkFilename: '[id].js',
+    cssHeadDataCompression: mode === 'production',
   },
-  plugins: [new HtmlWebpackPlugin({ filename: './public/index.html' })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      minify: mode === 'production',
+      inject: true,
+      template: './public/index.html',
+    }),
+  ],
   devServer,
 };
 

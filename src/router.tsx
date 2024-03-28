@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import { EpisodePage, MainPage, PodcastDetailsPage } from './pages';
+import { MainPage } from './pages';
 
 export const router = createBrowserRouter([
   {
@@ -13,11 +13,19 @@ export const router = createBrowserRouter([
       },
       {
         path: '/podcast/:podcastId',
-        element: <PodcastDetailsPage />,
+        async lazy() {
+          const { PodcastDetailsPage } = await import(
+            /* webpackMode: "lazy" */ './pages/PodcastDetailsPage/PodcastDetailsPage'
+          );
+          return { Component: PodcastDetailsPage };
+        },
       },
       {
         path: '/podcast/:podcastId/episode/:episodeId',
-        element: <EpisodePage />,
+        async lazy() {
+          const { EpisodePage } = await import(/* webpackMode: "lazy" */ './pages/EpisodePage/EpisodePage');
+          return { Component: EpisodePage };
+        },
       },
     ],
   },

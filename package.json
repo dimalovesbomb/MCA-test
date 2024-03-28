@@ -4,8 +4,8 @@
   "description": "test task for MCA",
   "main": "./src/index.js",
   "scripts": {
-    "start": "webpack serve",
-    "build-prod": "NODE_ENV=production webpack build",
+    "start": "NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack serve --mode=development",
+    "build": "NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack build --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dmitrii Kupriunin",
@@ -27,6 +27,9 @@
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.4.3",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",

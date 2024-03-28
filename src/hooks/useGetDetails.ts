@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getDetailsData } from '../api';
-import { parse } from 'rss-to-json';
 import { CachedRSSResponse, RSSResponse } from '../types';
 import { isDateExpired, checkAndRemoveExpiredData, retrieveAndCacheData } from '../helpers';
 
 const runGetDetails = async (podcastId = ''): Promise<CachedRSSResponse | void> => {
   try {
+    const { parse } = await import(/* webpackMode: "lazy" */ 'rss-to-json');
     const details = await getDetailsData(podcastId);
     const res: RSSResponse = await parse(details?.results[0].feedUrl || '');
 
