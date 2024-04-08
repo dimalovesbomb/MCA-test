@@ -5,11 +5,7 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--color-primary-white);
-    box-shadow: 0 5px 10px rgb(176 177 181 / 75%);
     padding: 0 .5rem 1rem;
-}
-
-.podcast-image-container {
 }
 
 .podcast-image {

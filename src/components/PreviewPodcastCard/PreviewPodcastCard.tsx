@@ -34,7 +34,7 @@ export const PreviewPodcastCard: React.FC<PodcastCardProps> = ({ image, label, a
             {...(wasRendered && { src: image[2].label })}
           />
         </figure>
-        <div className="preview-inner-container">
+        <div className="preview-inner-container shadow">
           <p className="preview-label">{label}</p>
           <p className="preview-author">By {author}</p>
         </div>

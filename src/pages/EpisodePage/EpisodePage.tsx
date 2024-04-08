@@ -25,7 +25,7 @@ export const EpisodePage: React.FC = () => {
         />
       </section>
       <section>
-        <div className="episode-page-right-content">
+        <div className="episode-page-right-content shadow">
           <h2>{currentEpisode?.title}</h2>
           <div dangerouslySetInnerHTML={{ __html: DOMPurity.sanitize(currentEpisode?.content || '') }} />
           <div className="episode-page-audio-container">

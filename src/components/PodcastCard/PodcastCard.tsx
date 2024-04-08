@@ -1,6 +1,6 @@
 import React from 'react';
-import './PodcastCardStyles.css';
 import { Link } from '../../types';
+import './PodcastCardStyles.css';
 
 interface PodcastCardProps {
   image: {
@@ -17,15 +17,15 @@ export const PodcastCard: React.FC<PodcastCardProps> = ({ image, label, artist, 
   const href = url && typeof url === 'object' ? url.attributes.href : url;
 
   return (
-    <div className="podcast-card-container">
+    <div className="podcast-card-container shadow">
       {url ? (
         <a href={href} target="_blank" rel="noopener noreferrer" className="link">
-          <figure className="podcast-image-container">
+          <figure>
             <img className="podcast-image" alt={image.alt} src={image.src} />
           </figure>
         </a>
       ) : (
-        <figure className="podcast-image-container">
+        <figure>
           <img className="podcast-image" alt={image.alt} src={image.src} />
         </figure>
       )}

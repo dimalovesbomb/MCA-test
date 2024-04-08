@@ -25,7 +25,7 @@ export const PodcastDetailsPage: React.FC = () => {
       </section>
 
       <section className="podcast-details-page-right">
-        <div className="podcast-details-page-right-header">
+        <div className="podcast-details-page-right-header shadow">
           <h2>Episodes: {details?.items?.length || 0}</h2>
         </div>
         <div>

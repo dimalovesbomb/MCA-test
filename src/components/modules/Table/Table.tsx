@@ -1,7 +1,7 @@
 import React from 'react';
 import { Item } from '../../../types';
-import './TableStyles.css';
 import { Link } from 'react-router-dom';
+import './TableStyles.css';
 
 interface TableProps {
   items: Item[];
@@ -16,7 +16,7 @@ export const Table: React.FC<TableProps> = ({ items, podcastId }) => {
   };
 
   return (
-    <div className="table-container">
+    <div className="table-container shadow">
       {!items.length ? (
         <span>...loading (or error)</span>
       ) : (
