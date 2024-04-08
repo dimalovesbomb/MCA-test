@@ -28,15 +28,13 @@ export const EpisodePage: React.FC = () => {
         <div className="episode-page-right-content">
           <h2>{currentEpisode?.title}</h2>
           <div dangerouslySetInnerHTML={{ __html: DOMPurity.sanitize(currentEpisode?.content || '') }} />
-          <div className="episode-page-listen-button-container">
-            <a
-              className="episode-page-listen-button"
-              href={currentEpisode?.enclosures[0].url || ''}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LISTEN LEGALLY
-            </a>
+          <div className="episode-page-audio-container">
+            <audio
+              className="episode-page-player"
+              controls
+              src={currentEpisode?.enclosures[0].url}
+              controlsList="nodownload"
+            />
           </div>
         </div>
       </section>
