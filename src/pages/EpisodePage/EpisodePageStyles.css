@@ -14,6 +14,7 @@ a {
     box-shadow: 0 5px 10px rgb(176 177 181 / 75%);
     border-radius: 5px;
     padding: 1rem;
+    min-width: 25vw;
 }
 
 .episode-page-audio-container {

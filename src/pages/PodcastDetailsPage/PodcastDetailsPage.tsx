@@ -26,7 +26,7 @@ export const PodcastDetailsPage: React.FC = () => {
 
       <section className="podcast-details-page-right">
         <div className="podcast-details-page-right-header">
-          <h2>Episodes: {details?.items.length}</h2>
+          <h2>Episodes: {details?.items?.length || 0}</h2>
         </div>
         <div>
           <Table items={details?.items || []} podcastId={podcastId || ''} />
