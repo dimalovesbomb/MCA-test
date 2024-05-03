@@ -3,15 +3,13 @@ import { FilterInput } from '../../components/modules/FilterInput';
 import { useFilterData, useGetData } from '../../hooks';
 import { PodcastCards } from '../../components/modules/PodcastCards';
 
-import './MainPageStyles.css';
-
 export const MainPage = () => {
   const { data } = useGetData();
   const { searchValue, setSearchValue, cards } = useFilterData(data?.feed.entry);
 
   return (
-    <main className="main">
-      <section className="filter">
+    <main className="flex flex-col mx-auto max-w-[1050px]">
+      <section className="self-end">
         <FilterInput
           count={cards.length}
           value={searchValue}
@@ -19,7 +17,7 @@ export const MainPage = () => {
           placeholder="Filter podcasts..."
         />
       </section>
-      <section className="podcast-cards">{cards.length && <PodcastCards entries={cards} />}</section>
+      <section>{cards.length && <PodcastCards entries={cards} />}</section>
     </main>
   );
 };

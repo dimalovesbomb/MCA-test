@@ -2,8 +2,6 @@ import React from 'react';
 import { Entry, Id } from '../../../types';
 import { PreviewPodcastCard } from '../../PreviewPodcastCard';
 
-import './PodcastCardsStyles.css';
-
 interface PodcastCardsProps {
   entries: Entry[];
 }
@@ -12,7 +10,7 @@ export const PodcastCards: React.FC<PodcastCardsProps> = ({ entries }) => {
   const composeUrl = (id: Id) => `/podcast/${id.attributes?.['im:id']}`;
 
   return (
-    <div className="podcast-cards-container">
+    <div className="flex flex-wrap justify-center gap-8 mt-8">
       {entries.map((card) => (
         <PreviewPodcastCard
           key={card.id.attributes?.['im:id']}

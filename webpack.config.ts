@@ -26,9 +26,9 @@ const config: Configuration = {
           'style-loader',
           {
             loader: 'css-loader',
-            options: {
-              modules: true,
-            },
+            // options: {
+            //   modules: true,
+            // },
           },
           'postcss-loader',
         ],
