@@ -14,7 +14,7 @@ export const EpisodePage: React.FC = () => {
   const currentEpisode = details?.items.find((episode) => episode.created === parseInt(atob(episodeId || '')));
 
   return (
-    <main className="episode-page-container">
+    <main className="flex mx-auto mt-8 desktop:max-w-[1050px] max-w-[1000px] flex-wrap desktop:flex-nowrap justify-center desktop:justify-normal gap-12">
       <section>
         <PodcastCard
           image={{ src: currentPodcast?.['im:image'][2].label || '', alt: currentPodcast?.['im:artist'].label || '' }}
@@ -25,16 +25,11 @@ export const EpisodePage: React.FC = () => {
         />
       </section>
       <section>
-        <div className="episode-page-right-content shadow">
+        <div className="rounded p-4 min-w-[25vw] shadow">
           <h2>{currentEpisode?.title}</h2>
           <div dangerouslySetInnerHTML={{ __html: DOMPurity.sanitize(currentEpisode?.content || '') }} />
-          <div className="episode-page-audio-container">
-            <audio
-              className="episode-page-player"
-              controls
-              src={currentEpisode?.enclosures[0].url}
-              controlsList="nodownload"
-            />
+          <div className="flex-center rounded-full p-1 bg-primary-blue mt-16">
+            <audio className="w-full" controls src={currentEpisode?.enclosures[0].url} controlsList="nodownload" />
           </div>
         </div>
       </section>

@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Item } from '../../../types';
 import { Link } from 'react-router-dom';
-import './TableStyles.css';
 
 interface TableProps {
   items: Item[];
@@ -15,31 +14,35 @@ export const Table: React.FC<TableProps> = ({ items, podcastId }) => {
     return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
   };
 
+  const renderThTd = (variant: 'th' | 'td', node: ReactElement | string | number) => {
+    return variant === 'th' ? (
+      <th className="p-2 border-b border-b-solid border-b-primary-black text-lg text-left">{node}</th>
+    ) : (
+      <td className="p-2 border-b border-b-solid border-b-primary-black text-sm">{node}</td>
+    );
+  };
+
   return (
-    <div className="table-container shadow">
+    <div className="rounded mt-8 p-4 h-screen overflow-y-scroll shadow">
       {!items.length ? (
         <span>...loading (or error)</span>
       ) : (
-        <table>
+        <table className="border-collapse w-full">
           <thead>
-            <tr>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Duration</th>
-            </tr>
+            <tr>{['Title', 'Date', 'Duration'].map((text) => renderThTd('th', text))}</tr>
           </thead>
           <tbody>
             {items.map((cell) => {
               return (
-                <tr key={cell.created.toString()}>
-                  <td>
-                    <Link className="table-link" to={composeUrl(cell.created.toString())}>
+                <tr key={cell.created} className="even:bg-[#ebeef3]">
+                  {renderThTd(
+                    'td',
+                    <Link className="no-underline text-primary-blue" to={composeUrl(cell.created.toString())}>
                       {cell.title}
-                    </Link>
-                  </td>
-
-                  <td>{getFullDate(cell.created)}</td>
-                  <td>{cell.itunes_duration}</td>
+                    </Link>,
+                  )}
+                  {renderThTd('td', getFullDate(cell.created))}
+                  {renderThTd('td', cell.itunes_duration)}
                 </tr>
               );
             })}

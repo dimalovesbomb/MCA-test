@@ -3,8 +3,6 @@ import { ImImage } from '../../types';
 import { Link } from 'react-router-dom';
 import { useOnScreen } from '../../hooks';
 
-import './PreviewPodcastCardStyles.css';
-
 interface PodcastCardProps {
   image: ImImage[];
   label: string;
@@ -24,19 +22,19 @@ export const PreviewPodcastCard: React.FC<PodcastCardProps> = ({ image, label, a
   }, [isOnScreen]);
 
   return (
-    <Link to={url} className="preview-link" ref={ref}>
-      <div className="preview-outer-container">
-        <figure className="preview-image-container">
+    <Link to={url} className="inline-block w-[17rem]" ref={ref}>
+      <div className="flex flex-col items-center">
+        <figure className="flex justify-center translate-y-2/4 origin-top mt-[-20%] w-[7.5rem] h-[7.5rem]">
           <img
-            className="preview-image"
+            className="rounded-full object-cover"
             alt={label}
             data-src={image[2].label}
             {...(wasRendered && { src: image[2].label })}
           />
         </figure>
-        <div className="preview-inner-container shadow">
-          <p className="preview-label">{label}</p>
-          <p className="preview-author">By {author}</p>
+        <div className="flex flex-col items-center w-full bg-primary-white pt-[4.5rem] rounded-b-lg shadow-md hover:shadow-lg hover:transition-shadow">
+          <p className="text-ellipsis overflow-hidden text-center text-primary-black uppercase px-2">{label}</p>
+          <p className="text-ellipsis overflow-hidden text-center text-primary-gray text-sm mb-3">By {author}</p>
         </div>
       </div>
     </Link>
