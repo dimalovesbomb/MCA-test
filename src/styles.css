@@ -8,14 +8,14 @@
 
 :root {
     --color-primary: #0b0b1f;
-    --color-secondary: #666669;
+    --color-primary-gray: #666669;
     --color-primary-white: #f4f4f5;
     --color-primary-blue: #252659;
 }
 
 body {
     margin: 0;
-    padding: 0 0 2rem 0;
+    padding: 0;
     box-sizing: border-box;
     background-color: #f6f7f8;
     font-family: 'Open Sans', serif;
@@ -28,4 +28,16 @@ body {
 
 .shadow {
     box-shadow: 0 5px 10px rgb(176 177 181 / 75%);
+}
+
+.flex-center {
+    @apply flex justify-center items-center;
+}
+
+.flex-between {
+    @apply flex justify-between items-center;
+}
+
+.flex-start {
+    @apply flex justify-start items-center;
 }

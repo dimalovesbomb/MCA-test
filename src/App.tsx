@@ -7,7 +7,7 @@ import './styles.css';
 
 export default function App() {
   return (
-    <div className="main-container">
+    <div className="max-w-[1100px] mx-auto">
       <Header />
       <Outlet />
     </div>
