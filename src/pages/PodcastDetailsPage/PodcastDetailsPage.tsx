@@ -12,7 +12,7 @@ export const PodcastDetailsPage: React.FC = () => {
 
   return (
     <main className="flex mx-auto mt-8 max-w-[1000px] tablet:max-w-[1050px] gap-4 desktop:gap-12 flex-wrap tablet:flex-nowrap">
-      <section className="flex justify-center w-full tablet:w-fit">
+      <section className="flex justify-center w-full tablet:w-fit h-fit">
         <PodcastCard
           image={{ src: currentPodcast?.['im:image'][2].label || '', alt: currentPodcast?.['im:artist'].label || '' }}
           label={currentPodcast?.['im:name'].label || ''}

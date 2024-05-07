@@ -9,7 +9,7 @@ export const MainPage = () => {
 
   return (
     <main className="flex flex-col mx-auto max-w-[1050px]">
-      <section className="self-end">
+      <section className="self-end mr-2">
         <FilterInput
           count={cards.length}
           value={searchValue}

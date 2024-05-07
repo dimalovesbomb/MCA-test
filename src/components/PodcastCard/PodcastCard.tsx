@@ -29,7 +29,7 @@ export const PodcastCard: React.FC<PodcastCardProps> = ({ image, label, artist, 
         </figure>
       )}
 
-      <div>
+      <div className="mt-2">
         {url ? (
           <a href={href} target="_blank" rel="noopener noreferrer">
             <p className="text-ellipsis overflow-hidden text-center text-primary-black uppercase mb-0">{label}</p>
