@@ -4,8 +4,6 @@ import { useGetData, useGetDetails } from '../../hooks';
 import { PodcastCard } from '../../components/PodcastCard';
 import { Table } from '../../components/modules/Table';
 
-import './PodcastDetailsPageStyles.css';
-
 export const PodcastDetailsPage: React.FC = () => {
   const { podcastId } = useParams();
   const { findPodcast } = useGetData();
@@ -13,8 +11,8 @@ export const PodcastDetailsPage: React.FC = () => {
   const { details } = useGetDetails(podcastId);
 
   return (
-    <main className="podcast-details-page-container">
-      <section>
+    <main className="flex mx-auto mt-8 max-w-[1000px] tablet:max-w-[1050px] gap-4 desktop:gap-12 flex-wrap tablet:flex-nowrap">
+      <section className="flex justify-center w-full tablet:w-fit">
         <PodcastCard
           image={{ src: currentPodcast?.['im:image'][2].label || '', alt: currentPodcast?.['im:artist'].label || '' }}
           label={currentPodcast?.['im:name'].label || ''}
@@ -24,9 +22,9 @@ export const PodcastDetailsPage: React.FC = () => {
         />
       </section>
 
-      <section className="podcast-details-page-right">
-        <div className="podcast-details-page-right-header shadow">
-          <h2>Episodes: {details?.items?.length || 0}</h2>
+      <section className="w-full">
+        <div className="rounded text-primary-black p-4 shadow">
+          <h2 className="m-0">Episodes: {details?.items?.length || 0}</h2>
         </div>
         <div>
           <Table items={details?.items || []} podcastId={podcastId || ''} />
