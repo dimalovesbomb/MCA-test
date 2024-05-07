@@ -17,7 +17,7 @@ export const MainPage = () => {
           placeholder="Filter podcasts..."
         />
       </section>
-      <section>{cards.length && <PodcastCards entries={cards} />}</section>
+      <section>{!!cards.length && <PodcastCards entries={cards} />}</section>
     </main>
   );
 };
