@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '../../helpers';
-import { SET_URL_EVENT } from '../../helpers/constants';
+import { SET_DATA_FOR_PLAYER } from '../../helpers/constants';
 import type { Entry, Item } from '../../types';
 
 interface AudioPlayerProps {
@@ -19,10 +19,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ className }) => {
     const cb = (e: Event) => {
       setData((e as CustomEvent<AudioPlayerData>).detail);
     };
-    document.addEventListener(SET_URL_EVENT, cb);
+    document.addEventListener(SET_DATA_FOR_PLAYER, cb);
 
     return () => {
-      document.removeEventListener(SET_URL_EVENT, cb);
+      document.removeEventListener(SET_DATA_FOR_PLAYER, cb);
     };
   }, []);
 

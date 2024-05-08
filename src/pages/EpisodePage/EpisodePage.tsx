@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { useGetData, useGetDetails } from '../../hooks';
 import { PodcastCard } from '../../components/PodcastCard';
 import DOMPurity from 'isomorphic-dompurify';
-import { SET_URL_EVENT } from '../../helpers/constants';
+import { SET_DATA_FOR_PLAYER } from '../../helpers/constants';
 
 export const EpisodePage: React.FC = () => {
   const { podcastId, episodeId } = useParams();
@@ -14,7 +14,7 @@ export const EpisodePage: React.FC = () => {
 
   useEffect(() => {
     if (currentEpisode && currentPodcast) {
-      document.dispatchEvent(new CustomEvent(SET_URL_EVENT, { detail: { currentEpisode, currentPodcast } }));
+      document.dispatchEvent(new CustomEvent(SET_DATA_FOR_PLAYER, { detail: { currentEpisode, currentPodcast } }));
     }
   }, [currentEpisode, currentPodcast]);
 
