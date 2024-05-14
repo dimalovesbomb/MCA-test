@@ -32,7 +32,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ className }) => {
         'flex-center flex-col rounded-t-lg pt-1 pb-3 bg-primary-blue shadow-[1px_-6px_10px_rgba(176,177,181,0.75)]',
         className,
         {
-          invisible: !data?.currentEpisode.enclosures[0].url,
+          '!hidden': !data?.currentEpisode.enclosures[0].url,
         },
       )}
     >
