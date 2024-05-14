@@ -19,7 +19,7 @@ export const Table: React.FC<TableProps> = ({ items, podcastId }) => {
     return variant === 'th' ? (
       <th className={cn('p-2 border-b border-b-solid border-b-primary-black text-lg text-left', className)}>{node}</th>
     ) : (
-      <td className="p-2 border-b border-b-solid border-b-primary-black text-sm">{node}</td>
+      <td className={cn('p-2 border-b border-b-solid border-b-primary-black text-sm', className)}>{node}</td>
     );
   };
 
