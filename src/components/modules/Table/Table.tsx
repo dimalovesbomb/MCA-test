@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Item } from '../../../types';
 import { Link } from 'react-router-dom';
+import { cn } from '../../../helpers';
 
 interface TableProps {
   items: Item[];
@@ -14,22 +15,26 @@ export const Table: React.FC<TableProps> = ({ items, podcastId }) => {
     return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
   };
 
-  const renderThTd = (variant: 'th' | 'td', node: ReactElement | string | number) => {
+  const renderThTd = (variant: 'th' | 'td', node: ReactElement | string | number, className?: string) => {
     return variant === 'th' ? (
-      <th className="p-2 border-b border-b-solid border-b-primary-black text-lg text-left">{node}</th>
+      <th className={cn('p-2 border-b border-b-solid border-b-primary-black text-lg text-left', className)}>{node}</th>
     ) : (
       <td className="p-2 border-b border-b-solid border-b-primary-black text-sm">{node}</td>
     );
   };
 
   return (
-    <div className="rounded mt-8 p-4 h-screen overflow-y-scroll shadow">
+    <div className="rounded mt-8 p-4 pt-0 h-[500px] overflow-y-scroll shadow">
       {!items.length ? (
-        <span>...loading (or error)</span>
+        <span>...loading</span>
       ) : (
-        <table className="border-collapse w-full">
+        <table className="relative border-collapse w-full mt-4">
           <thead>
-            <tr>{['Title', 'Date', 'Duration'].map((text) => renderThTd('th', text))}</tr>
+            <tr>
+              {['Title', 'Date', 'Duration'].map((text) =>
+                renderThTd('th', text, 'sticky top-0 bg-unset bg-secondary-white'),
+              )}
+            </tr>
           </thead>
           <tbody>
             {items.map((cell) => {

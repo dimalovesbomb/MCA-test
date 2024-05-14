@@ -6,6 +6,7 @@ import { CachedOverviewData, Entry } from '../types';
 
 export const useGetData = () => {
   const [data, setData] = useState<CachedOverviewData | null>(null);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const localStorageData = localStorage.getItem(LC_OVERVIEW_DATA_KEY);
@@ -21,6 +22,9 @@ export const useGetData = () => {
           setData(response);
           checkAndRemoveExpiredData();
         },
+        onError: () => {
+          setHasError(true);
+        },
       });
     }
   }, []);
@@ -32,5 +36,6 @@ export const useGetData = () => {
   return {
     data,
     findPodcast,
+    hasError,
   };
 };

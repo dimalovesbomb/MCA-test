@@ -3,15 +3,16 @@ import { useParams } from 'react-router';
 import { useGetData, useGetDetails } from '../../hooks';
 import { PodcastCard } from '../../components/PodcastCard';
 import { Table } from '../../components/modules/Table';
+import { ErrorBanner } from '../../components/ErrorBanner';
 
 export const PodcastDetailsPage: React.FC = () => {
   const { podcastId } = useParams();
   const { findPodcast } = useGetData();
   const currentPodcast = findPodcast(podcastId || '');
-  const { details } = useGetDetails(podcastId);
+  const { details, hasError } = useGetDetails(podcastId);
 
   return (
-    <main className="flex mx-auto mt-8 max-w-[1000px] tablet:max-w-[1050px] gap-4 desktop:gap-12 flex-wrap tablet:flex-nowrap">
+    <main className="flex mx-auto mt-8 max-w-[1000px] tablet:max-w-[1050px] gap-4 desktop:gap-12 flex-wrap tablet:flex-nowrap desktop:h-screen">
       <section className="flex justify-center w-full tablet:w-fit h-fit">
         <PodcastCard
           image={{ src: currentPodcast?.['im:image'][2].label || '', alt: currentPodcast?.['im:artist'].label || '' }}
@@ -26,9 +27,7 @@ export const PodcastDetailsPage: React.FC = () => {
         <div className="rounded text-primary-black p-4 shadow">
           <h2 className="m-0">Episodes: {details?.items?.length || 0}</h2>
         </div>
-        <div>
-          <Table items={details?.items || []} podcastId={podcastId || ''} />
-        </div>
+        <div>{hasError ? <ErrorBanner /> : <Table items={details?.items || []} podcastId={podcastId || ''} />}</div>
       </section>
     </main>
   );

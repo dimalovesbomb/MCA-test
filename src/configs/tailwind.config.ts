@@ -8,6 +8,10 @@ export const TWconfig: Partial<Config> = {
         gray: 'var(--color-primary-gray)',
         white: 'var(--color-primary-white)',
         blue: 'var(--color-primary-blue)',
+        red: 'var(--color-primary-red)',
+      },
+      secondary: {
+        white: 'var(--color-secondary-white)',
       },
     },
     extend: {
