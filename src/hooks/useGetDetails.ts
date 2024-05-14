@@ -4,19 +4,16 @@ import { CachedRSSResponse, RSSResponse } from '../types';
 import { isDateExpired, checkAndRemoveExpiredData, retrieveAndCacheData } from '../helpers';
 
 const runGetDetails = async (podcastId = ''): Promise<CachedRSSResponse | void> => {
-  try {
-    const { parse } = await import(/* webpackMode: "lazy" */ /* webpackPreload: true */ 'rss-to-json');
-    const details = await getDetailsData(podcastId);
-    const res: RSSResponse = await parse(details?.results[0].feedUrl || '');
+  const { parse } = await import(/* webpackMode: "lazy" */ /* webpackPreload: true */ 'rss-to-json');
+  const details = await getDetailsData(podcastId);
+  const res: RSSResponse = await parse(details?.results[0].feedUrl || '');
 
-    return { ...res, meta: { podcastId, loadedTimestamp: Date.now() } };
-  } catch (e) {
-    console.error(e);
-  }
+  return { ...res, meta: { podcastId, loadedTimestamp: Date.now() } };
 };
 
 export const useGetDetails = (podcastId = '') => {
   const [details, setDetails] = useState<CachedRSSResponse>();
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const targetPodcastFromCache = localStorage.getItem(podcastId);
@@ -32,9 +29,12 @@ export const useGetDetails = (podcastId = '') => {
           setDetails(response);
           checkAndRemoveExpiredData();
         },
+        onError: () => {
+          setHasError(true);
+        },
       });
     }
   }, []);
 
-  return { details };
+  return { details, hasError };
 };
