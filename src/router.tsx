@@ -1,11 +1,16 @@
+import { Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import { MainPage } from './pages';
+import { EpisodePage, MainPage, PodcastDetailsPage } from './pages';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <Suspense fallback={<div>...loading</div>}>
+        <App />
+      </Suspense>
+    ),
     children: [
       {
         path: '/',
@@ -14,19 +19,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/podcast/:podcastId',
-        async lazy() {
-          const { PodcastDetailsPage } = await import(
-            /* webpackMode: "lazy" */ './pages/PodcastDetailsPage/PodcastDetailsPage'
-          );
-          return { Component: PodcastDetailsPage };
-        },
+        element: <PodcastDetailsPage />,
       },
       {
         path: '/podcast/:podcastId/episode/:episodeId',
-        async lazy() {
-          const { EpisodePage } = await import(/* webpackMode: "lazy" */ './pages/EpisodePage/EpisodePage');
-          return { Component: EpisodePage };
-        },
+        element: <EpisodePage />,
       },
     ],
   },
