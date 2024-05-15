@@ -10,8 +10,8 @@ export const useFilterData = (entries?: Entry[]) => {
       return (
         entries?.filter(
           (card) =>
-            card['im:name'].label.toLowerCase().includes(deferredSearchValue) ||
-            card['im:artist'].label.toLowerCase().includes(deferredSearchValue),
+            card['im:name'].label.toLowerCase().includes(deferredSearchValue.toLowerCase()) ||
+            card['im:artist'].label.toLowerCase().includes(deferredSearchValue.toLowerCase()),
         ) || []
       );
     }
