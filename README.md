@@ -1,5 +1,6 @@
 # MCA podcast app
 
+FOR LATEST UPDATES CHECK THE DEV BRANCH
 ---
 
 ### Run the app locally:
