@@ -22,7 +22,7 @@ const EpisodePage: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="flex mx-auto mt-8 desktop:max-w-[1050px] max-w-[1000px] flex-wrap desktop:flex-nowrap justify-center desktop:justify-normal gap-12 desktop:h-screen">
+      <main className="flex mx-auto mt-8 mb-32 tablet:mb-28 desktop:mb-0 desktop:max-w-[1050px] max-w-[1000px] flex-wrap desktop:flex-nowrap justify-center desktop:justify-normal gap-12">
         <section>
           <PodcastCard
             image={{ src: currentPodcast?.['im:image'][2].label || '', alt: currentPodcast?.['im:artist'].label || '' }}

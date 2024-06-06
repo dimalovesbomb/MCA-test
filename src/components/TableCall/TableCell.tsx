@@ -10,14 +10,24 @@ export const TableCell: React.FC<PropsWithChildren<TableCellProps>> = ({ variant
   switch (variant) {
     case 'th':
       return (
-        <th className={cn('p-2 border-b border-b-solid border-b-primary-black text-lg text-left', className)}>
+        <th
+          className={cn(
+            'p-2 border-b border-b-solid border-b-primary-black text-md tablet:text-lg text-left',
+            className,
+          )}
+        >
           {children}
         </th>
       );
 
     case 'td':
       return (
-        <td className={cn('p-2 border-b border-b-solid border-b-primary-black text-lg text-left', className)}>
+        <td
+          className={cn(
+            'p-2 border-b border-b-solid border-b-primary-black text-md tablet:text-lg text-left',
+            className,
+          )}
+        >
           {children}
         </td>
       );
