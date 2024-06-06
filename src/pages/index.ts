@@ -1,3 +1,6 @@
+import { lazy } from 'react';
+
 export { MainPage } from './MainPage/MainPage';
-export { PodcastDetailsPage } from './PodcastDetailsPage/PodcastDetailsPage';
-export { EpisodePage } from './EpisodePage/EpisodePage';
+
+export const PodcastDetailsPage = lazy(() => import('./PodcastDetailsPage/PodcastDetailsPage'));
+export const EpisodePage = lazy(() => import('./EpisodePage/EpisodePage'));

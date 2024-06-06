@@ -6,6 +6,7 @@ type RetrieveAndCacheDataSetupObj<Res> = {
   getDataFn: () => Promise<Res | void>;
   localStorageKey: string;
   callback?: (response: Res) => void;
+  onError?: (e: unknown) => void;
 };
 
 function setItemToLocalStorage<T>(localStorageKey: string, data: T) {
@@ -42,12 +43,14 @@ function setItemToLocalStorage<T>(localStorageKey: string, data: T) {
 }
 
 export async function retrieveAndCacheData<Res>(setup: RetrieveAndCacheDataSetupObj<Res>) {
-  const { getDataFn, localStorageKey, callback } = setup;
-  const response = await getDataFn();
-
-  response && setItemToLocalStorage(localStorageKey, response);
-
-  callback && response && callback(response);
+  const { getDataFn, localStorageKey, callback, onError } = setup;
+  try {
+    const response = await getDataFn();
+    response && setItemToLocalStorage(localStorageKey, response);
+    callback && response && callback(response);
+  } catch (e) {
+    onError && onError(e);
+  }
 }
 
 export const checkAndRemoveExpiredData = () => {

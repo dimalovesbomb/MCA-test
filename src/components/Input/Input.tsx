@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from 'react';
-import './InputStyles.css';
 
 export interface InputProps {
   value: string;
@@ -12,5 +11,12 @@ export const Input: React.FC<InputProps> = ({ value, onChange, placeholder = 'Ty
     onChange(e.target.value);
   };
 
-  return <input className="input-el" value={value} onChange={onChangeHandler} placeholder={placeholder} />;
+  return (
+    <input
+      className="inline-block w-60 h-8 px-2 rounded border border-primary-blue bg-primary-white"
+      value={value}
+      onChange={onChangeHandler}
+      placeholder={placeholder}
+    />
+  );
 };
