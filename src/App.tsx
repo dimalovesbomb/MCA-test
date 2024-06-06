@@ -7,9 +7,9 @@ import './styles.css';
 
 export default function App() {
   return (
-    <div className="max-w-[1100px] mx-auto">
+    <div className="max-w-[1100px] mx-auto relative">
       <Outlet />
-      <AudioPlayer className="sticky bottom-0" />
+      <AudioPlayer className="fixed bottom-0 left-0 w-full" />
     </div>
   );
 }
