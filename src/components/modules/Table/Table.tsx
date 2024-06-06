@@ -1,6 +1,6 @@
 import React from 'react';
-import { Item } from '../../../types';
 import { Link } from 'react-router-dom';
+import { Item } from '../../../types';
 import { TableCell } from '../../TableCall';
 
 const composeUrl = (podcastId: string, episodeId: string) => `/podcast/${podcastId}/episode/${btoa(episodeId)}`;
@@ -16,7 +16,7 @@ interface TableProps {
 
 export const Table: React.FC<TableProps> = ({ items, podcastId }) => {
   return (
-    <div className="rounded mt-8 p-4 pt-0 h-[500px] overflow-y-scroll shadow">
+    <div className="rounded mt-8 p-4 pt-0 h-[50vh] desktop:h-[70vh] overflow-y-scroll shadow">
       {!items.length ? (
         <span>...loading</span>
       ) : (
