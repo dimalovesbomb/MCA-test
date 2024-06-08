@@ -5,13 +5,15 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const devServer: DevServerConfiguration = {
   historyApiFallback: true,
+  host: '0.0.0.0',
+  port: 8080,
 };
 
 const mode = (process.env.NODE_ENV as 'production' | 'development' | undefined) ?? 'development';
 
 const config: Configuration = {
   mode,
-  entry: './src/index.tsx',
+  entry: path.resolve(__dirname, '/src/index.tsx'),
   module: {
     rules: [
       {
